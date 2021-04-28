@@ -1,25 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import {postBookings} from "../container/Bookings_service"
 
 const BookingForm = ({addBooking}) => {
+
+    const [formData, setFormData] = useState({});
   
     // onchange to update form
+    const onChange = (event) => {
+        formData[event.target.id] = event.target.value;
+        setFormData(formData)
+      
+    }
+
 
     // onsubmmit to pass data to db
+
+    const onSubmit = (event) => {
+        
+        event.preventDefault();
+        postBookings(formData).then((data) => {
+            addBooking(data);
+            
+
+          
+        });
+        event.target.reset();
+      
+    }
 
     return (
         <div>
         <h1>booking form</h1>
-        <form>
-            <label name="name">Name</label>
-            <input type="text" name="name" id="name"/>
+        <form onSubmit={onSubmit}>
+            <label  name="name">Name</label>
+            <input onChange={onChange} type="text" name="name" id="name"/>
             <label name="email">Email</label>
-            <input type="text" name="email" id="email"/>
+            <input onChange={onChange} type="text" name="email" id="email"/>
             <select name="checkedIn" id="checkedIn">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select>
-            <input type="submit" onSubmit={submitForm}/>
+            <input type="submit" value="Save" onChange={onChange}/>
         </form>
         </div>
     )
