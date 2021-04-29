@@ -1,4 +1,4 @@
-const bookingsUrl = 'http://localhost:5000/api/bookings';
+const bookingsUrl = 'http://localhost:5000/api/bookings/';
 
 export const getBookings = () => {
   return fetch(bookingsUrl).then(res => res.json())

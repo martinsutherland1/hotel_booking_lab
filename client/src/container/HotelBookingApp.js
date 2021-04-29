@@ -26,7 +26,7 @@ const HotelBookingApp = () => {
       const indexToDel = temp.map(booking => booking._id).indexOf(id);
       console.log(indexToDel);
       temp.splice(indexToDel, 1);
-     setBookingList(temp);
+      setBookingList(temp);
     }
 
     // const removeSighting = (id) => {

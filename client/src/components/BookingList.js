@@ -9,6 +9,7 @@ const BookingList = ({bookingList, onBookingClick, selectedBooking, removeBookin
       onBookingClick(selectedBooking)
     }
     const handleDelete = (e) => {
+      console.log(e.target.value)
       deleteBookings(e.target.value).then(() => {
         removeBooking(e.target.value)
       })
