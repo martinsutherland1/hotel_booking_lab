@@ -17,7 +17,7 @@ const BookingForm = ({addBooking}) => {
 
     const onSubmit = (event) => {
         
-        event.preventDefault();
+        // event.preventDefault();
         postBookings(formData).then((data) => {
             addBooking(data);
             
@@ -36,11 +36,11 @@ const BookingForm = ({addBooking}) => {
             <input onChange={onChange} type="text" name="name" id="name"/>
             <label name="email">Email</label>
             <input onChange={onChange} type="text" name="email" id="email"/>
-            <select name="checkedIn" id="checkedIn">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
+            <select name="checkedIn" id="checkedIn" onChange={onChange}>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
             </select>
-            <input type="submit" value="Save" onChange={onChange}/>
+            <input type="submit"/>
         </form>
         </div>
     )
